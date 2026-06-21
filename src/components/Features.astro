@@ -1,0 +1,52 @@
+---
+import cliGif from "../assets/cli.gif";
+
+const features = [
+  {
+    title: "Visual Log",
+    description: "Acts as a monitoring interface for regular technical events.",
+    icon: `<svg class="w-6 h-6 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>`,
+  },
+  {
+    title: "Terminal",
+    description:
+      "It contains essential functions designed to improve and facilitate vault auditing.",
+    icon: `<svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>`,
+  },
+];
+---
+
+<section
+  id="features"
+  class="py-24 relative bg-[linear-gradient(to_bottom,rgba(0,0,0,0.0),#050C19,#4C22BFbc),url('../assets/capturas.png')] bg-center bg-contain bg-no-repeat"
+>
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 [text-shadow:0_0_15px_#ffffff7a] text-center">
+        Latest Features
+      </h2>
+      <p class="text-lg">
+        The latest implementations aim to transparently display the parameters and configurations of <strong>Bóveda Core</strong>
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {
+        features.map((feature) => (
+          <div class="p-8 rounded-3xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-all duration-300 hover:shadow-[0_0_30px_-10px_rgba(79,70,229,0.3)] hover:-translate-y-1 group">
+            <div
+              class="w-14 h-14 rounded-2xl bg-slate-800/80 border border-slate-700 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-slate-800 transition-all shadow-inner"
+              set:html={feature.icon}
+            />
+            <h3 class="text-xl font-semibold text-white mb-3 tracking-tight">
+              {feature.title}
+            </h3>
+            <p class="text-slate-400 leading-relaxed text-sm md:text-base">
+              {feature.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,11 +1,21 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Features from "../components/Features.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="Bóveda - Secure Credential Manager"
+  description="Bóveda is a modern, fast, and secure credential manager built for privacy."
+>
+  <main class="grid grid-rows-[64px_1fr_64px]">
+    <Header />
+    <div>
+      <Hero />
+      <Features />
+    </div>
+    <Footer />
+  </main>
 </Layout>
