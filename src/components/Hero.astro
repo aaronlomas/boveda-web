@@ -3,19 +3,25 @@ import { Image } from "astro:assets";
 import batBoveda from "../assets/bat-boveda.svg";
 ---
 
-<section class="relative w-full min-h-[94vh] flex flex-col justify-center py-20 md:py-0 overflow-hidden">
+<section
+  class="relative w-full min-h-[94vh] flex flex-col justify-center py-20 md:py-0 overflow-hidden"
+>
   <!-- Decorative background elements -->
   <div
     class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-indigo-600/20 rounded-full blur-[120px] pointer-events-none"
   >
   </div>
 
-  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row gap-12 items-center">
-    <div class="max-w-2xl text-center md:text-left flex flex-col items-center md:items-start mt-8 md:mt-0">
+  <div
+    class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row gap-12 items-center"
+  >
+    <div
+      class="max-w-2xl text-center md:text-left flex flex-col items-center md:items-start mt-8 md:mt-0"
+    >
       <h1
         class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 md:mb-8 leading-[1.1]"
       >
-        Secure your digital life with &rarrlp;
+        Secure your digital life with
         <span
           id="typewriter-text"
           class="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-cyan-400 cursor-terminal"
@@ -39,7 +45,7 @@ import batBoveda from "../assets/bat-boveda.svg";
       <Image
         src={batBoveda}
         alt="Bóveda App Illustration"
-        class="w-full h-auto drop-shadow-[0_0_25px_rgba(79,70,229,0.4)] group-hover:scale-105 transition-transform duration-700 ease-out relative z-10"
+        class="w-full h-auto group-hover:scale-105 transition-transform duration-700 ease-out relative z-10 animate-bat-color"
       />
     </div>
   </div>
@@ -52,12 +58,10 @@ import batBoveda from "../assets/bat-boveda.svg";
     const targetSpan = document.getElementById("typewriter-text");
     // Parameters: element, word, write_speed(120ms), delete_speed(60ms), read_pause(2500ms)
     if (targetSpan) {
-      
-      typeEffectInfinite(targetSpan, "Bóveda", 120, 60, 2500);
+      typeEffectInfinite(targetSpan, "Bóveda", 120, 60, 4500);
     }
   });
 </script>
-
 
 <style>
   .cursor-terminal {
@@ -70,7 +74,21 @@ import batBoveda from "../assets/bat-boveda.svg";
       border-color: transparent;
     }
   }
-  .btn-primary:hover{
+  .btn-primary:hover {
     border: none;
+  }
+
+  @keyframes bat-color-shift {
+    0%,
+    100% {
+      filter: drop-shadow(0 0 10px #a165da27);
+    }
+    50% {
+      filter: drop-shadow(0 0 10px #a877d679);
+    }
+  }
+
+  .animate-bat-color {
+    animation: bat-color-shift 2s infinite ease-in-out;
   }
 </style>
