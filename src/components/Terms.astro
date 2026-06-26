@@ -1,94 +1,27 @@
-<main class="terms-conditions">
-  <h1>Términos y Condiciones de Uso de Bóveda</h1>
-  <p>
-    Bienvenido a <strong>Bóveda</strong>. Al utilizar este software, aceptas
-    cumplir y quedar sujeto a los siguientes Términos y Condiciones. Si no estás
-    de acuerdo con ellos, debes abstenerte de utilizar esta aplicación.
-  </p>
+---
+import { marked } from "marked";
 
-  <section>
-    <h2>1. Naturaleza del Proyecto</h2>
-    <ul>
-      <li>
-        <strong>Proyecto personal:</strong> Bóveda es un software desarrollado de
-        forma independiente y con fines no comerciales.
-      </li>
-      <li>
-        <strong>Modelo "Tal Cual":</strong> La aplicación se proporciona "tal cual"
-        (<em>as is</em>) y "según disponibilidad".
-      </li>
-      <li>
-        <strong>Sin soporte garantizado:</strong> No existe obligación legal de proporcionar
-        actualizaciones, mantenimiento o soporte técnico continuo.
-      </li>
-    </ul>
-  </section>
+const GITHUB_RAW_URL =
+  "https://raw.githubusercontent.com/aaronlomas/boveda/refs/heads/main/TERMS.md";
 
-  <section>
-    <h2>2. Propiedad Intelectual y Licencia</h2>
-    <ul>
-      <li>
-        <strong>Código abierto:</strong> El código fuente de Bóveda es público y está
-        sujeto a su respectiva licencia de software libre (ej. MIT / GPL).
-      </li>
-      <li>
-        <strong>Derechos de marca:</strong> El nombre "Bóveda" y sus elementos visuales
-        de identidad pertenecen a su creador.
-      </li>
-    </ul>
-  </section>
+let githubContentHtml = "";
 
-  <section>
-    <h2>3. Responsabilidad Exclusiva del Usuario</h2>
-    <ul>
-      <li>
-        <strong>Clave maestra:</strong> El usuario es el único custodio y responsable
-        de recordar su contraseña principal.
-      </li>
-      <li>
-        <strong>Irrecuperabilidad:</strong> El desarrollador no almacena claves ni
-        posee mecanismos para restablecer accesos perdidos.
-      </li>
-      <li>
-        <strong>Pérdida definitiva:</strong> Olvidar la clave maestra implica la pérdida
-        permanente e irreversible de todos los datos guardados.
-      </li>
-      <li>
-        <strong>Seguridad del entorno:</strong> Es deber del usuario proteger su dispositivo
-        contra malware, <em>keyloggers</em> o accesos físicos no autorizados.
-      </li>
-    </ul>
-  </section>
+try {
+  const response = await fetch(GITHUB_RAW_URL);
+  if (!response.ok) throw new Error("Could not get the file");
 
-  <section>
-    <h2>4. Limitación de Responsabilidad</h2>
-    <ul>
-      <li>
-        <strong>Exención de daños:</strong> El desarrollador no será responsable de
-        ningún daño directo, indirecto, incidental o consecuente.
-      </li>
-      <li>
-        <strong>Incidentes de seguridad:</strong> No se asume responsabilidad por
-        pérdida de datos, hackeos locales o fallos en el cifrado.
-      </li>
-      <li>
-        <strong>Uso bajo propio riesgo:</strong> El usuario asume completamente el
-        riesgo financiero o logístico derivado del uso del software.
-      </li>
-    </ul>
-  </section>
+  const markdownTexto = await response.text();
 
-  <section>
-    <h2>5. Modificaciones</h2>
-    <ul>
-      <li>
-        <strong>Cambios en los términos:</strong> Estos términos pueden actualizarse
-        en cualquier momento sin previo aviso.
-      </li>
-      <li>
-        <strong>Aceptación continua:</strong> El uso continuo de Bóveda tras una modificación
-        constituye la aceptación de los nuevos términos.
-      </li>
-    </ul>
+  githubContentHtml = await marked.parse(markdownTexto);
+} catch (error) {
+  console.error("Error loading terms:", error);
+  githubContentHtml =
+    "<p>Error loading terms and conditions. Please, check the official repository.</p>";
+}
+---
+
+<main class="flex justify-center p-12">
+  <section class="prose prose-slate dark:prose-invert">
+    <div set:html={githubContentHtml} />
   </section>
 </main>

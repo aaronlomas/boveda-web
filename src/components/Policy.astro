@@ -8,15 +8,15 @@ let githubContentHtml = "";
 
 try {
   const response = await fetch(GITHUB_RAW_URL);
-  if (!response.ok) throw new Error("No se pudo obtener el archivo de GitHub");
+  if (!response.ok) throw new Error("Could not get the file");
 
   const markdownTexto = await response.text();
 
   githubContentHtml = await marked.parse(markdownTexto);
 } catch (error) {
-  console.error("Error al cargar la privacidad desde GitHub:", error);
+  console.error("Error loading policy:", error);
   githubContentHtml =
-    "<p>Error al cargar las especificaciones técnicas. Por favor, verifica el repositorio oficial.</p>";
+    "<p>Error loading policy. Please, check the official repository.</p>";
 }
 ---
 
