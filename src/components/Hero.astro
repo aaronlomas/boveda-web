@@ -28,9 +28,9 @@ import batBoveda from "../assets/bat-boveda.svg";
       <div class="flex gap-4">
         <a
           href="/download"
-          class="btn-primary flex items-center px-6 py-3 border-b-4 border-indigo-700 bg-linear-to-b from-indigo-700 to-indigo-500 rounded-md"
+          class="btn-primary relative flex items-center px-6 py-3 border-2 border-dashed rounded-md overflow-hidden hover:border-solid"
         >
-          Download Bóveda
+        <span class="z-2">Download Bóveda</span>
         </a>
       </div>
     </div>
@@ -68,8 +68,21 @@ import batBoveda from "../assets/bat-boveda.svg";
       border-color: transparent;
     }
   }
-  .btn-primary:hover {
-    border: none;
+  .btn-primary::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 1px;
+    background: none;
+    transform-origin: center;
+    z-index: 1;
+    transition: .3s linear;
+  }
+  .btn-primary:hover::after {
+    transform: scale(300);
+    background: linear-gradient(to top, #853dd8, #1e086e, #1e086e);
   }
 
   @keyframes bat-color-shift {
