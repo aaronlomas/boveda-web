@@ -188,7 +188,8 @@ function getAssetUrl(pattern: RegExp): string {
     <div>
       <span class="text-xs font-semibold uppercase tracking-wider text-orange-400 block mb-2">Step 1: Download the public GPG key</span>
       <div class="relative bg-slate-950 rounded-xl p-4 border border-slate-800 font-mono text-xs text-slate-300 overflow-x-auto">
-        <code>curl -fsSL https://github.io | sudo gpg --dearmor -o /usr/share/keyrings/boveda-archive-keyring.gpg</code>
+        <code>curl -fsSL https://aaronlomas.github.io/boveda/boveda-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/boveda-archive-keyring.gpg
+        </code>
       </div>
     </div>
 
@@ -196,7 +197,7 @@ function getAssetUrl(pattern: RegExp): string {
     <div>
       <span class="text-xs font-semibold uppercase tracking-wider text-orange-400 block mb-2">Step 2: Add the repository to APT sources</span>
       <div class="relative bg-slate-950 rounded-xl p-4 border border-slate-800 font-mono text-xs text-slate-300 overflow-x-auto">
-        <code>echo "deb [arch=amd64 signed-by=/usr/share/keyrings/boveda-archive-keyring.gpg] https://github.io stable main" | sudo tee /etc/apt/sources.list.d/boveda.list > /dev/null</code>
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/boveda-archive-keyring.gpg] https:// aaronlomas .github.io /boveda stable main" | sudo tee /etc/apt/sources.list.d/boveda.list > /dev/null
       </div>
     </div>
 
