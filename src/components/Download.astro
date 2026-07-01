@@ -176,9 +176,9 @@ function getAssetUrl(pattern: RegExp): string {
 
 <section>
 <div class="max-w-2xl mx-auto rounded-2xl p-6">
-  <h2 class="text-white font-bold text-2xl mb-4 flex items-center gap-2">
+  <h1 class="text-white font-extrabold text-4xl mb-4 text-center gap-2">
     Installation for Debian/Ubuntu
-  </h2>
+  </h1>
   <p class="text-slate-400 text-sm mb-6">
     Run these commands in your terminal to add the official repository and receive automatic updates.
   </p>
@@ -187,7 +187,7 @@ function getAssetUrl(pattern: RegExp): string {
     <!-- Step 1 -->
     <div>
       <span class="text-xs font-semibold uppercase tracking-wider text-orange-400 block mb-2">Step 1: Download the public GPG key</span>
-      <div class="relative bg-slate-950 rounded-xl p-4 border border-slate-800 font-mono text-xs text-slate-300 overflow-x-auto">
+      <div class="relative bg-slate-800 border border-indigo-500/20 p-4 font-mono text-xs text-slate-300 overflow-x-auto">
         <code>curl -fsSL https://aaronlomas.github.io/boveda/boveda-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/boveda-archive-keyring.gpg
         </code>
       </div>
@@ -196,7 +196,7 @@ function getAssetUrl(pattern: RegExp): string {
     <!-- Step 2 -->
     <div>
       <span class="text-xs font-semibold uppercase tracking-wider text-orange-400 block mb-2">Step 2: Add the repository to APT sources</span>
-      <div class="relative bg-slate-950 rounded-xl p-4 border border-slate-800 font-mono text-xs text-slate-300 overflow-x-auto">
+      <div class="relative bg-slate-800 border border-indigo-500/20 p-4 font-mono text-xs text-slate-300 overflow-x-auto">
         echo "deb [arch=amd64 signed-by=/usr/share/keyrings/boveda-archive-keyring.gpg] https://aaronlomas.github.io/boveda stable main" | sudo tee/etc/apt/sources.list.d/boveda.list > /dev/null
       </div>
     </div>
@@ -204,7 +204,7 @@ function getAssetUrl(pattern: RegExp): string {
     <!-- Step 3 -->
     <div>
       <span class="text-xs font-semibold uppercase tracking-wider text-orange-400 block mb-2">Step 3: Synchronize and install Bóveda</span>
-      <div class="relative bg-slate-950 rounded-xl p-4 border border-slate-800 font-mono text-xs text-slate-300 overflow-x-auto">
+      <div class="relative bg-slate-800 border border-indigo-500/20 p-4 font-mono text-xs text-slate-300 overflow-x-auto">
         <code>sudo apt update && sudo apt install boveda</code>
       </div>
     </div>
