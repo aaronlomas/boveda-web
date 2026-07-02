@@ -1,6 +1,7 @@
 ---
 const pathname = Astro.url.pathname;
 ---
+
 <header
   class="flex justify-between items-center px-5 py-3 border-b border-white/5 relative z-50 bg-[#0B0B0F]"
 >
@@ -25,32 +26,36 @@ const pathname = Astro.url.pathname;
         href="/"
         class:list={[
           "text-lg md:text-base transition-colors",
-          pathname === "/" ? "text-violet-500" : "hover:text-violet-500"
-        ]}
-        >Home</a
+          pathname === "/" ? "text-violet-500" : "hover:text-violet-500",
+        ]}>Home</a
       >
       <a
         href="/features"
         class:list={[
           "text-lg md:text-base transition-colors",
-          pathname === "/features" || pathname === "/features/" ? "text-violet-500" : "hover:text-violet-500"
-        ]}
-        >Features</a
+          pathname === "/features" || pathname === "/features/"
+            ? "text-violet-500"
+            : "hover:text-violet-500",
+        ]}>Features</a
       >
       <a
         href="/security"
         class:list={[
           "text-lg md:text-base transition-colors",
-          pathname === "/security" || pathname === "/security/" ? "text-violet-500" : "hover:text-violet-500"
-        ]}
-        >Security</a
+          pathname === "/security" || pathname === "/security/"
+            ? "text-violet-500"
+            : "hover:text-violet-500",
+        ]}>Security</a
       >
     </nav>
-<!-- Button Donation (mobile) -->
-    <button
+    <!-- Button Donation (mobile) -->
+
+    <a
+      href="https://ko-fi.com/boveda"
+      target="_blank"
+      rel="noopener noreferrer"
       class="flex md:hidden items-center gap-2 cursor-pointer bg-violet-500 px-6 py-2 rounded-xl donate mt-2"
-    >
-      <a href="/donate">Donate</a>
+      >Donate
       <svg
         xmlns="http://w3.org"
         stroke-linecap="round"
@@ -66,15 +71,17 @@ const pathname = Astro.url.pathname;
           d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
         ></path></svg
       >
-    </button>
+    </a>
   </div>
 
   <!--Button Donation (web) -->
   <div class="hidden md:flex items-center">
-    <button
+    <a
+      href="https://ko-fi.com/boveda"
+      target="_blank"
+      rel="noopener noreferrer"
       class="flex items-center gap-2 cursor-pointer bg-violet-500 px-4 py-1 rounded-xl donate"
-    >
-      <a href="/donate">Donate</a>
+      >Donate
       <svg
         xmlns="http://w3.org"
         stroke-linecap="round"
@@ -90,10 +97,9 @@ const pathname = Astro.url.pathname;
           d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
         ></path></svg
       >
-    </button>
+    </a>
   </div>
 
-  <!-- Button mobile hamburger -->
   <label
     for="menu-toggle"
     class="block md:hidden text-white cursor-pointer p-2 transition-transform active:scale-95 z-50 select-none peer-checked:[&>#icon-hamburger]:hidden peer-checked:[&>#icon-close]:block"
