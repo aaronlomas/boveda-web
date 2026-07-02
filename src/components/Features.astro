@@ -1,6 +1,4 @@
 ---
-import cliGif from "../assets/cli.gif";
-
 const features = [
   {
     title: "Visual Log",
@@ -18,7 +16,7 @@ const features = [
 
 <section
   id="features"
-  class="relative pb-20 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.0),#050C19,#4C22BFbc),url('../assets/capturas.png')] bg-center bg-contain bg-no-repeat"
+  class="relative flex flex-col justify-center"
 >
   <div class="max-w-7xl mx-auto px-6">
     <div class="max-w-3xl mx-auto mb-16">
@@ -36,7 +34,7 @@ const features = [
     <div class="grid md:grid-cols-3 gap-8">
       {
         features.map((feature) => (
-          <div class="p-8 rounded-3xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-all duration-300 hover:shadow-[0_0_30px_-10px_rgba(79,70,229,0.3)] hover:-translate-y-1 group">
+          <div class="p-8 rounded-3xl border border-slate-800 hover:border-indigo-500/50 transition-all duration-300 hover:shadow-[0_0_30px_-10px_rgba(79,70,229,0.3)] hover:-translate-y-1 group">
             <div
               class="w-14 h-14 rounded-2xl bg-slate-800/80 border border-slate-700 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-slate-800 transition-all shadow-inner"
               set:html={feature.icon}

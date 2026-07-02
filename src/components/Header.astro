@@ -1,9 +1,148 @@
-<header class="flex justify-between items-center px-5 py-3">
+---
+const pathname = Astro.url.pathname;
+---
+<header
+  class="flex justify-between items-center px-5 py-3 border-b border-white/5 relative z-50 bg-[#0B0B0F]"
+>
   <div class="flex items-center">
-    <a href="/" class="text-xl md:text-2xl font-bold text-white tracking-wide border-2 px-2">Bóveda</a>
+    <a
+      href="/"
+      class="text-xl md:text-2xl font-bold text-white tracking-wide border-2 px-2"
+      >Bóveda</a
+    >
   </div>
-  <div class="flex items-center gap-4">
-    <a href="#features" class="hover:text-white transition-colors hover:underline">Features</a>
-    <a href="/security" class="hover:text-white transition-colors hover:underline">Security</a>
+
+  <input type="checkbox" id="menu-toggle" class="peer hidden" />
+
+  <!-- center with left-1/2 and -translate-x-1/2 -->
+  <div
+    class="hidden md:flex flex-col md:flex-row items-center gap-6 absolute md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 top-[61px] left-0 w-full md:w-auto bg-[#050C19]/95 md:bg-transparent backdrop-blur-md md:backdrop-blur-none border-b md:border-none border-white/5 py-8 md:py-0 z-40 shadow-2xl md:shadow-none peer-checked:flex indi"
+  >
+    <nav
+      class="flex flex-col md:flex-row items-center gap-6 md:gap-4 w-full md:w-auto"
+    >
+      <a
+        href="/"
+        class:list={[
+          "text-lg md:text-base transition-colors",
+          pathname === "/" ? "text-violet-500" : "hover:text-violet-500"
+        ]}
+        >Home</a
+      >
+      <a
+        href="/features"
+        class:list={[
+          "text-lg md:text-base transition-colors",
+          pathname === "/features" || pathname === "/features/" ? "text-violet-500" : "hover:text-violet-500"
+        ]}
+        >Features</a
+      >
+      <a
+        href="/security"
+        class:list={[
+          "text-lg md:text-base transition-colors",
+          pathname === "/security" || pathname === "/security/" ? "text-violet-500" : "hover:text-violet-500"
+        ]}
+        >Security</a
+      >
+    </nav>
+<!-- Button Donation (mobile) -->
+    <button
+      class="flex md:hidden items-center gap-2 cursor-pointer bg-violet-500 px-6 py-2 rounded-xl donate mt-2"
+    >
+      <a href="/donate">Donate</a>
+      <svg
+        xmlns="http://w3.org"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
+        class="i-heart"
+        height="24"
+        stroke="currentColor"
+        stroke-width="2"
+        width="24"
+        viewBox="0 0 24 24"
+        ><path
+          d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+        ></path></svg
+      >
+    </button>
   </div>
+
+  <!--Button Donation (web) -->
+  <div class="hidden md:flex items-center">
+    <button
+      class="flex items-center gap-2 cursor-pointer bg-violet-500 px-4 py-1 rounded-xl donate"
+    >
+      <a href="/donate">Donate</a>
+      <svg
+        xmlns="http://w3.org"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
+        class="i-heart"
+        height="24"
+        stroke="currentColor"
+        stroke-width="2"
+        width="24"
+        viewBox="0 0 24 24"
+        ><path
+          d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+        ></path></svg
+      >
+    </button>
+  </div>
+
+  <!-- Button mobile hamburger -->
+  <label
+    for="menu-toggle"
+    class="block md:hidden text-white cursor-pointer p-2 transition-transform active:scale-95 z-50 select-none peer-checked:[&>#icon-hamburger]:hidden peer-checked:[&>#icon-close]:block"
+  >
+    <svg
+      id="icon-hamburger"
+      xmlns="http://w3.org"
+      width="32"
+      height="32"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <line x1="4" y1="6" x2="20" y2="6"></line>
+      <line x1="4" y1="12" x2="20" y2="12"></line>
+      <line x1="4" y1="18" x2="20" y2="18"></line>
+    </svg>
+    <svg
+      id="icon-close"
+      class="hidden"
+      xmlns="http://w3.org"
+      width="32"
+      height="32"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </label>
 </header>
+
+<style>
+  .i-heart,
+  .donate {
+    transition: 0.3s linear;
+    font-weight: bolder;
+  }
+  .donate:hover > .i-heart {
+    fill: white;
+  }
+  .donate:hover {
+    filter: drop-shadow(0 0 6px #7957cade);
+  }
+</style>

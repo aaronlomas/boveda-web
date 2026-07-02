@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+import images from "../assets/gallery/images.png";
+---
+<section class="h-screen flex flex-col justify-center">
+  <div class="px-6">
+    <h1 class="text-4xl font-extrabold text-center">
+      Everything you need to keep your secrets safe
+    </h1>
+    <p class="text-center text-indigo-300 text-lg md:text-xl">
+      Safety doesn't necessarily have to feel complicated
+    </p>
+  </div>
+  <div class="grid py-10 justify-center px-6">
+    <Image
+      src={images}
+      alt="Bóveda application dashboard showcase"
+      class="h-full w-250 rounded-xl shadow-2xl"
+    />
+  </div>
+</section>

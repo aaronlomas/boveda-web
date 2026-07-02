@@ -1,21 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import Features from "../components/Features.astro";
-import Footer from "../components/Footer.astro";
+import Gallery from "../components/Gallery.astro";
 ---
 
 <Layout
   title="Bóveda - Secure Credential Manager"
   description="Bóveda is a modern, fast, and secure credential manager built for privacy."
 >
-  <main class="grid grid-rows-[auto_1fr_auto]">
-    <Header />
-    <div class="grid gap-12">
-      <Hero />
-      <Features />
-    </div>
-    <Footer />
-  </main>
+  <Hero />
+  <Gallery />
 </Layout>

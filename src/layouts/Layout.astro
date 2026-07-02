@@ -1,11 +1,13 @@
 ---
-import '../styles/global.css';
-import batBoveda from '../assets/icons/icon-web.svg';
-import { ClientRouter } from 'astro:transitions';
+import "../styles/global.css";
+import batBoveda from "../assets/icons/icon-web.svg";
+import { ClientRouter } from "astro:transitions";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 
 interface Props {
-	title: string;
-	description: string;
+  title: string;
+  description: string;
 }
 
 const { title, description } = Astro.props;
@@ -13,27 +15,38 @@ const { title, description } = Astro.props;
 
 <!doctype html>
 <html lang="en" class="scroll-smooth">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href={batBoveda.src} />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={description} />
-		<ClientRouter /> 
-		<title>{title}</title>
-		
-		<!-- Google Fonts: Inter -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-	</head>
-	<body class="bg-[#0B0B0F] text-slate-100 font-sans selection:text-indigo-200 overflow-x-hidden">
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href={batBoveda.src} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <ClientRouter />
+    <title>{title}</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-[#0B0B0F] text-slate-100 font-sans selection:text-indigo-200 overflow-x-hidden"
+  >
+    <main class="grid grid-rows-[auto_1fr_auto] min-h-screen">
+      <Header />
+      <div class="grid gap-12 py-18 md:py-0">
+        <slot />
+      </div>
+      <Footer />
+    </main>
+  </body>
 </html>
 
 <style>
-	body {
-		font-family: 'Inter', sans-serif;
-	}
+  body {
+    font-family: "Inter", sans-serif;
+  }
 </style>

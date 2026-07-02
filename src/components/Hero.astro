@@ -3,9 +3,7 @@ import { Image } from "astro:assets";
 import batBoveda from "../assets/icons/icon-desktop-negative.svg";
 ---
 
-<section
-  class="relative w-full h-[90vh] flex flex-col justify-center"
->
+<section class="relative w-full h-[90vh] flex flex-col justify-center">
   <div
     class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row gap-12 items-center"
   >
@@ -28,9 +26,9 @@ import batBoveda from "../assets/icons/icon-desktop-negative.svg";
       <div class="flex gap-4">
         <a
           href="/download"
-          class="btn-primary relative flex items-center px-6 py-3 border-2 border-dashed rounded-md overflow-hidden hover:border-solid"
+          class="btn-primary relative flex items-center px-6 py-3 border-2 border-dashed rounded-md overflow-hidden hover:border-solid font-extrabold"
         >
-        <span class="z-2">Download Bóveda</span>
+          <span class="z-2">Download Bóveda</span>
         </a>
       </div>
     </div>
@@ -80,10 +78,10 @@ import batBoveda from "../assets/icons/icon-desktop-negative.svg";
     background: none;
     transform-origin: center;
     z-index: 1;
-    transition: .3s linear;
+    transition: 0.3s linear;
   }
   .btn-primary:hover::after {
     transform: scale(400);
-    background: linear-gradient(to top, #853dd8, #2f086e, #1e086e);
+    background: #7249d3;
   }
 </style>
