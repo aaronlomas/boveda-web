@@ -183,13 +183,12 @@ function getAssetUrl(pattern: RegExp): string {
     Run these commands in your terminal to properly install Bóveda.
   </p>
 
-  <div class="space-y-6 text-left">
+  <div class="space-y-6 text-left selection:bg-slate-900">
     <!-- Step 1 -->
     <div>
       <span class="text-xs font-semibold uppercase tracking-wider text-orange-400 block mb-2">Step 1: Download the public GPG key</span>
       <div class="relative bg-slate-800 border border-indigo-500/20 p-4 font-mono text-xs text-slate-300 overflow-x-auto">
-        <code>curl -fsSL https://aaronlomas.github.io/boveda/boveda-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/boveda-archive-keyring.gpg
-        </code>
+        <code>curl -fsSL https://github.io | sudo gpg --dearmor -o /usr/share/keyrings/boveda-archive-keyring.gpg</code>
       </div>
     </div>
 
@@ -197,7 +196,7 @@ function getAssetUrl(pattern: RegExp): string {
     <div>
       <span class="text-xs font-semibold uppercase tracking-wider text-orange-400 block mb-2">Step 2: Add the repository to APT sources</span>
       <div class="relative bg-slate-800 border border-indigo-500/20 p-4 font-mono text-xs text-slate-300 overflow-x-auto">
-        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/boveda-archive-keyring.gpg] https://aaronlomas.github.io/boveda stable main" | sudo tee/etc/apt/sources.list.d/boveda.list > /dev/null
+        <code>echo "deb [arch=amd64 signed-by=/usr/share/keyrings/boveda-archive-keyring.gpg] https://github.io stable main" | sudo tee /etc/apt/sources.list.d/boveda.list > /dev/null</code>
       </div>
     </div>
 
@@ -209,6 +208,7 @@ function getAssetUrl(pattern: RegExp): string {
       </div>
     </div>
   </div>
+
 </div>
 
 </section>
