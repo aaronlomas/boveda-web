@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import batBoveda from "../assets/icons/icon-web.svg";
+import iconWeb from "../assets/icons/icon-web.svg";
 import { ClientRouter } from "astro:transitions";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
@@ -11,6 +11,8 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+
+const shareImage = iconWeb.src; 
 ---
 
 <!doctype html>
@@ -18,11 +20,23 @@ const { title, description } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href={batBoveda.src} />
+    <link rel="icon" type="image/svg+xml" href={iconWeb.src} />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <ClientRouter />
     <title>{title}</title>
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={shareImage} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={shareImage} />
 
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -50,3 +64,4 @@ const { title, description } = Astro.props;
     font-family: "Inter", sans-serif;
   }
 </style>
+
