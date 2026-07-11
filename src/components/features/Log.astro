@@ -1,0 +1,167 @@
+---
+import LayoutTerminal from "./LayoutTerminal.astro";
+
+const tabs = [
+  { label: "Log", active: true },
+  { label: "Terminal", active: false },
+];
+---
+
+<!-- Visual Log Section -->
+<div class="mt-28">
+  <div class="max-w-3xl mx-auto mb-12 text-center">
+    <h3 class="text-2xl md:text-4xl font-bold text-white mb-4">
+      Real-time Decryption Tracing
+    </h3>
+    <p class="text-slate-400 text-base leading-relaxed text-start">
+      Every time a secret is accessed, the <strong class="text-slate-300"
+        >Visual Log</strong
+      > records the full cryptographic pipeline in real time — from the audited
+      IPC command down to the final payload integrity check.
+    </p>
+  </div>
+
+  <!-- Log window -->
+  <div class="max-w-4xl mx-auto mb-10">
+    <LayoutTerminal tabs={tabs} glowColor="rgba(99,102,241,0.2)">
+      <div class="px-6 py-5 font-mono text-sm space-y-2.5">
+        <!-- Row 1 -->
+        <div class="flex items-start gap-3">
+          <span class="text-slate-500 shrink-0">[14:57:28]</span>
+          <span
+            class="shrink-0 px-1.5 py-0.5 rounded text-xs font-semibold bg-blue-500/15 text-blue-300 border border-blue-500/20"
+            >[IPC]</span
+          >
+          <span class="text-slate-300"
+            >Audited command received: <span class="text-indigo-300"
+              >GetSecret</span
+            >(id: <span class="text-yellow-300">tKYZ+b6L...</span>)</span
+          >
+        </div>
+        <!-- Row 2 -->
+        <div class="flex items-start gap-3">
+          <span class="text-slate-500 shrink-0">[14:57:28]</span>
+          <span
+            class="shrink-0 px-1.5 py-0.5 rounded text-xs font-semibold bg-purple-500/15 text-purple-300 border border-purple-500/20"
+            >[CIPHER]</span
+          >
+          <span class="text-slate-300">Fetching entry payload...</span>
+        </div>
+        <!-- Row 3 -->
+        <div class="flex items-start gap-3">
+          <span class="text-slate-500 shrink-0">[14:57:28]</span>
+          <span
+            class="shrink-0 px-1.5 py-0.5 rounded text-xs font-semibold bg-purple-500/15 text-purple-300 border border-purple-500/20"
+            >[CIPHER]</span
+          >
+          <span class="text-slate-300"
+            >Decrypting with <span class="text-cyan-300"
+              >ChaCha20-Poly1305</span
+            > <span class="text-slate-500">(AEAD)</span></span
+          >
+        </div>
+        <!-- Row 4 -->
+        <div class="flex items-start gap-3">
+          <span class="text-slate-500 shrink-0">[14:57:28]</span>
+          <span
+            class="shrink-0 px-1.5 py-0.5 rounded text-xs font-semibold bg-purple-500/15 text-purple-300 border border-purple-500/20"
+            >[CIPHER]</span
+          >
+          <span class="text-slate-300"
+            >Extracting <span class="text-cyan-300">Nonce</span>
+            <span class="text-slate-500">(12 bytes)</span> and <span
+              class="text-cyan-300">Auth Tag</span
+            > <span class="text-slate-500">(16 bytes)</span></span
+          >
+        </div>
+        <!-- Row 5 -->
+        <div class="flex items-start gap-3">
+          <span class="text-slate-500 shrink-0">[14:57:28]</span>
+          <span
+            class="shrink-0 px-1.5 py-0.5 rounded text-xs font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/20"
+            >[SUCCESS]</span
+          >
+          <span class="text-slate-300"
+            >MAC validation passed. <span class="text-emerald-300 font-medium"
+              >Integrity verified.</span
+            ></span
+          >
+        </div>
+        <!-- Row 6 -->
+        <div class="flex items-start gap-3">
+          <span class="text-slate-500 shrink-0">[14:57:28]</span>
+          <span
+            class="shrink-0 px-1.5 py-0.5 rounded text-xs font-semibold bg-purple-500/15 text-purple-300 border border-purple-500/20"
+            >[CIPHER]</span
+          >
+          <span class="text-slate-300"
+            >Payload decrypted. Integrity verified <span class="text-slate-500"
+              >[7ms]</span
+            ></span
+          >
+        </div>
+      </div>
+    </LayoutTerminal>
+  </div>
+
+  <!-- Log entry explanation cards -->
+  <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-5">
+    <!-- IPC card -->
+    <div
+      class="p-6 rounded-2xl border border-slate-800 bg-slate-900/40 hover:border-blue-500/40 hover:shadow-[0_0_25px_-8px_rgba(59,130,246,0.2)] transition-all duration-300 hover:-translate-y-0.5"
+    >
+      <div class="flex items-center gap-3 mb-4">
+        <span
+          class="px-2 py-1 rounded text-xs font-semibold bg-blue-500/15 text-blue-300 border border-blue-500/20 font-mono"
+          >[IPC]</span
+        >
+        <span class="text-slate-400 text-xs">Inter-Process Communication</span>
+      </div>
+      <p class="text-slate-400 text-sm leading-relaxed">
+        Logged when the UI sends a secure command to the Bóveda Core backend.
+        Each call is <strong class="text-slate-300">audited</strong> and tagged with
+        the entry ID being requested, ensuring full traceability of every secret
+        access.
+      </p>
+    </div>
+
+    <!-- CIPHER card -->
+    <div
+      class="p-6 rounded-2xl border border-slate-800 bg-slate-900/40 hover:border-purple-500/40 hover:shadow-[0_0_25px_-8px_rgba(168,85,247,0.2)] transition-all duration-300 hover:-translate-y-0.5"
+    >
+      <div class="flex items-center gap-3 mb-4">
+        <span
+          class="px-2 py-1 rounded text-xs font-semibold bg-purple-500/15 text-purple-300 border border-purple-500/20 font-mono"
+          >[CIPHER]</span
+        >
+        <span class="text-slate-400 text-xs">Cryptographic Operations</span>
+      </div>
+      <p class="text-slate-400 text-sm leading-relaxed">
+        Covers every step of the decryption pipeline: fetching the encrypted
+        payload, selecting the <strong class="text-slate-300"
+          >ChaCha20-Poly1305</strong
+        > algorithm, extracting the 12-byte Nonce and 16-byte Auth Tag, and finally
+        decrypting the data. Execution time is shown in milliseconds.
+      </p>
+    </div>
+
+    <!-- SUCCESS card -->
+    <div
+      class="p-6 rounded-2xl border border-slate-800 bg-slate-900/40 hover:border-emerald-500/40 hover:shadow-[0_0_25px_-8px_rgba(16,185,129,0.2)] transition-all duration-300 hover:-translate-y-0.5"
+    >
+      <div class="flex items-center gap-3 mb-4">
+        <span
+          class="px-2 py-1 rounded text-xs font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/20 font-mono"
+          >[SUCCESS]</span
+        >
+        <span class="text-slate-400 text-xs">Integrity Confirmation</span>
+      </div>
+      <p class="text-slate-400 text-sm leading-relaxed">
+        Confirms that the <strong class="text-slate-300"
+          >MAC (Message Authentication Code)</strong
+        > validation passed, proving the payload has not been tampered with. If this
+        check fails, access is denied and the event is flagged in the audit log.
+      </p>
+    </div>
+  </div>
+</div>

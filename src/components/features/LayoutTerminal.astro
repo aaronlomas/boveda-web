@@ -1,0 +1,52 @@
+---
+interface Tab {
+  label: string;
+  active?: boolean;
+}
+
+interface Props {
+  /** Optional tab list to show in the title bar */
+  tabs?: Tab[];
+  /** Glow color for the shadow — any Tailwind arbitrary value, e.g. "rgba(34,211,238,0.15)" */
+  glowColor?: string;
+}
+
+const { tabs, glowColor = "rgba(34,211,238,0.15)" } = Astro.props;
+---
+
+<div
+  class="rounded-2xl border border-slate-700/60 overflow-hidden"
+  style={`box-shadow: 0 0 60px -20px ${glowColor}`}
+>
+  <!-- Title bar -->
+  <div class="flex items-center gap-0 bg-slate-900 border-b border-slate-800">
+    <div class="flex items-center gap-2 px-4 py-3 shrink-0">
+      <span class="w-3 h-3 rounded-full bg-red-500/70"></span>
+      <span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
+      <span class="w-3 h-3 rounded-full bg-green-500/70"></span>
+    </div>
+
+    {
+      tabs && tabs.length > 0 ? (
+        <div class="flex ml-2">
+          {tabs.map((tab) => (
+            <span
+              class={`px-5 py-2.5 text-sm font-medium transition-colors ${
+                tab.active
+                  ? "text-white border-b-2 border-indigo-400 bg-slate-800/60"
+                  : "text-slate-500"
+              }`}
+            >
+              {tab.label}
+            </span>
+          ))}
+        </div>
+      ) : null
+    }
+  </div>
+
+  <!-- Content slot -->
+  <div class="bg-[#0b0f1a]">
+    <slot />
+  </div>
+</div>
